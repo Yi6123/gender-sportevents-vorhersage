@@ -32,6 +32,7 @@ if st.button("Vorhersage starten"):
 
     # 3. In DataFrame umwandeln
     input_df = pd.DataFrame([input_data])
+    input_df = input_df[model.feature_names_in_]
 
     # 4. Vorhersage durchführen
     prediction = model.predict(input_df)[0]
