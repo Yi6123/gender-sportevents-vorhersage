@@ -31,7 +31,7 @@ if st.button("Vorhersage starten"):
     input_data[sport_mapping[sport]] = 1
 
     # 3. In DataFrame umwandeln
-    input_df = pd.DataFrame([input_data])
+    input_df = pd.DataFrame([input_data], columns=model.feature_names_in_)
 
     # 4. Vorhersage durchführen
     prediction = model.predict(input_df)[0]
