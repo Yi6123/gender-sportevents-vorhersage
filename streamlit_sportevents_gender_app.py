@@ -25,14 +25,13 @@ if st.button("Vorhersage starten"):
     year_scaled = scaler.transform([[year]])[0][0]
 
     # 2. One-hot Input vorbereiten
-    feature_columns = ["Year"] + list(sport_mapping.values())
+    feature_columns = list(model.feature_names_in_)
     input_data = dict.fromkeys(feature_columns, 0)
     input_data["Year"] = year_scaled
     input_data[sport_mapping[sport]] = 1
 
     # 3. In DataFrame umwandeln
     input_df = pd.DataFrame([input_data])
-    input_df = input_df[model.feature_names_in_]
 
     # 4. Vorhersage durchführen
     prediction = model.predict(input_df)[0]
